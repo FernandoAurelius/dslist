@@ -2,6 +2,7 @@ package br.com.floresdev.dslist.controllers;
 
 import br.com.floresdev.dslist.entities.dto.GameDTO;
 import br.com.floresdev.dslist.entities.dto.GameMinDTO;
+import br.com.floresdev.dslist.projections.GameMinProjection;
 import br.com.floresdev.dslist.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

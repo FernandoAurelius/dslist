@@ -12,7 +12,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
- * A anotação @Service serve para marcar a classe como um componente do Spring, aplicando IoC e DI */
+ * A anotação @Service serve para marcar a classe como um componente do Spring, aplicando IoC e DI
+ * */
 @Service
 public class GameService {
 
@@ -25,7 +26,8 @@ public class GameService {
         return result.stream().map(GameMinDTO::new).toList();
     }
 
-    /** A anotação @Transactional enquadra nossa operação de busca dentro do padrão ACID do SQL
+    /**
+     * A anotação @Transactional enquadra nossa operação de busca dentro do padrão ACID do SQL
      * O tratamento de exceção foi feito de maneira resumida, pois a resolução real é um tanto mais complexa
      *  */
     @Transactional(readOnly = true)
@@ -33,6 +35,15 @@ public class GameService {
         return repository.findById(id)
                 .map(GameDTO::new)
                 .orElseThrow(() -> new NoSuchElementException("Game not found with id: " + id));
+    }
+
+    /**
+     * Seguindo o padrão aprendido, vamos aplicar a mesma lógica definida na função findAll() aqui, com a diferença
+     * de recebermos um argumento dessa vez
+     * */
+    @Transactional(readOnly = true)
+    public List<GameMinDTO> findByList(Long listId) {
+        return repository.searchByList(listId).stream().map(GameMinDTO::new).toList();
     }
 
 }
