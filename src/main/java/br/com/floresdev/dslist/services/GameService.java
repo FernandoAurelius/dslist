@@ -35,5 +35,4 @@ public class GameService {
                 .orElseThrow(() -> new NoSuchElementException("Game not found with id: " + id));
     }
 
-
 }

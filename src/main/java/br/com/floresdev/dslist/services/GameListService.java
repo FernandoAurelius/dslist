@@ -1,6 +1,7 @@
 package br.com.floresdev.dslist.services;
 
 import br.com.floresdev.dslist.entities.GameList;
+import br.com.floresdev.dslist.entities.dto.GameListDTO;
 import br.com.floresdev.dslist.repository.GameListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +16,8 @@ public class GameListService {
     GameListRepository repository;
 
     @Transactional(readOnly = true)
-    public List<GameList> findAll() {
-        return repository.findAll();
+    public List<GameListDTO> findAll() {
+        return repository.findAll().stream().map(GameListDTO::new).toList();
     }
 
 }

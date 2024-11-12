@@ -1,6 +1,7 @@
 package br.com.floresdev.dslist.controllers;
 
 import br.com.floresdev.dslist.entities.GameList;
+import br.com.floresdev.dslist.entities.dto.GameListDTO;
 import br.com.floresdev.dslist.services.GameListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,7 @@ public class GameListController {
     GameListService service;
 
     @GetMapping
-    public List<GameList> findAll() {
+    public List<GameListDTO> findAll() {
         return service.findAll();
     }
 
