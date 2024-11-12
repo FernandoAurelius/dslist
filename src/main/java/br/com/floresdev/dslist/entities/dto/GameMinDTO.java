@@ -10,7 +10,7 @@ import br.com.floresdev.dslist.entities.Game;
 * */
 public class GameMinDTO {
 
-    private long id;
+    private Long id;
 
     private String title;
 
