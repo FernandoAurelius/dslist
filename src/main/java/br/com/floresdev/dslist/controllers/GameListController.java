@@ -1,6 +1,5 @@
 package br.com.floresdev.dslist.controllers;
 
-import br.com.floresdev.dslist.entities.GameList;
 import br.com.floresdev.dslist.entities.dto.GameListDTO;
 import br.com.floresdev.dslist.entities.dto.GameMinDTO;
 import br.com.floresdev.dslist.services.GameListService;
