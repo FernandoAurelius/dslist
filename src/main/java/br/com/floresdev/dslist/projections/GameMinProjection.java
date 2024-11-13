@@ -9,7 +9,8 @@ public interface GameMinProjection {
 
     String getTitle();
 
-    Integer getYear();
+    // Adaptado para o POSTGRES (não aceita ``)
+    Integer getGameYear();
 
     String getImgUrl();
 
