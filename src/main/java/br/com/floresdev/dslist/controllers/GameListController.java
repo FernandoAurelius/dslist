@@ -1,14 +1,13 @@
 package br.com.floresdev.dslist.controllers;
 
+import br.com.floresdev.dslist.entities.GameList;
 import br.com.floresdev.dslist.entities.dto.GameListDTO;
 import br.com.floresdev.dslist.entities.dto.GameMinDTO;
+import br.com.floresdev.dslist.entities.dto.ReplacementDTO;
 import br.com.floresdev.dslist.services.GameListService;
 import br.com.floresdev.dslist.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,6 +20,9 @@ public class GameListController {
 
     @Autowired
     GameService gameService;
+
+    @Autowired
+    GameListService gameListService;
 
     @GetMapping
     public List<GameListDTO> findAll() {
@@ -35,6 +37,11 @@ public class GameListController {
     @GetMapping(value = "/{listId}/games")
     public List<GameMinDTO> findByList(@PathVariable Long listId) {
         return gameService.findByList(listId);
+    }
+
+    @PostMapping(value = "/{listId}/replacement")
+    public void replaceGameByList(@PathVariable Long listId, @RequestBody ReplacementDTO replacement) {
+        gameListService.move(listId, replacement.getSourceIndex(), replacement.getDestinationIndex());
     }
 
 }
